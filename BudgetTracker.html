@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Traffic</title>
+    <link rel="stylesheet" href="sty.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header> <!--header -->
+        <h1>The Transaction Traffic</h1> <!--title of application-->
+    </header>
+    <main>
+        <div class="main-container">
+            <!-- sets Initial Balance -->
+            <section id="set-initial-balance">
+                <h2>Set Initial Balance</h2>
+                <input type="number" id="initial-balance" step="0.01" placeholder="Enter initial balance" required>
+                <button id="set-balance-button">Set Initial Balance</button>
+            </section>
+
+            <!-- adds Transaction Form Section -->
+            <section id="add-transaction">
+                <h2>Add Transaction</h2>
+                <form id="transaction-form">
+                    <input type="number" id="amount" step="0.01" placeholder="Amount" required>
+                    <select id="category" required>
+                        <option value="Food">Food</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Miscellaneous">Miscellaneous</option>
+                        <option value="Custom">Custom...</option>
+                    </select>
+                    <input type="text" id="custom-category" placeholder="Custom Category" style="display:none;">
+                    <select id="currency" required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BDT">BDT</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                    <input type="text" id="description" placeholder="Description" required>
+                    <input type="date" id="transaction-date" required>
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </section>
+
+            <!-- adds Balance Section -->
+            <section id="add-balance">
+                <h2>Add Balance</h2>
+                <form id="add-balance-form">
+                    <input type="number" id="balance-amount" step="0.01" placeholder="Amount" required>
+                    <select id="balance-method" required>
+                        <option value="Cash">Cash</option>
+                        <option value="Credit">Credit</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                    <input type="text" id="balance-description" placeholder="Description" required>
+                    <select id="balance-currency" required>
+                        <!--Dropdown-->
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BDT">BDT</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                    <input type="date" id="balance-date" required>
+                    <button type="submit">Add Balance</button>
+                </form>
+            </section>
+
+            <!-- currency Conversion happens here -->
+            <section id="currency-conversion">
+                <h2>Currency Converter</h2>
+                <form id="currency-conversion-form">
+                    <input type="number" id="conversion-amount" step="0.01" placeholder="Amount" required>
+                    <!--Dropdown-->
+                    <select id="from-currency" required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BDT">BDT</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                    <span>to</span>
+                    <!--Dropdown-->
+                    <select id="to-currency" required>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BDT">BDT</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                    <button type="button" id="convert-currency">Convert</button>
+                </form>
+                <div id="conversion-result">
+                    <p>Converted Amount: <span id="converted-amount">0.000</span></p>
+                </div>
+            </section>
+        </div>
+
+        <!-- The Balance Section -->
+        <section id="balance">
+            <h2>Current Balance</h2>
+            <div id="balance-display">$0.00</div>
+        </section>
+
+        <!-- the Transaction History Section -->
+        <section id="transaction-history">
+            <h2>Transaction History</h2>
+            <input type="text" id="search-bar" placeholder="Search by category, description, or date" oninput="searchTransactions()">
+            <table id="transaction-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Currency</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- All Transactions here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer><!--footer-->
+        <p>A Brudget Tracker By Students</p>
+    </footer>
+</body>
+</html>
